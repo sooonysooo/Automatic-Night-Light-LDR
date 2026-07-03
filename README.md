@@ -8,18 +8,23 @@ Tested through hardware implementation and simulation.
 
 ## Project Overview
 
-This project automatically turns ON an LED during darkness and switches it OFF when sufficient light is available. The circuit uses an LDR (Light Dependent Resistor) to detect ambient light and a BC547 transistor as a switching device.
+This project automatically turns ON an LED during low-light conditions and turns it OFF when sufficient light is available. It uses an LDR (Light Dependent Resistor) for light sensing and a BC547 transistor as a switching device.
 
----
+## Circuit Diagram
 
-## Objective
+```mermaid
+graph TD
+    VCC["+5V"] --> R1["10kΩ Resistor"]
+    R1 --> B["BC547 Base"]
+    B --> LDR["LDR"]
+    LDR --> GND["GND"]
 
-- Detect light intensity using an LDR
-- Implement automatic switching
-- Understand threshold behavior
-- Learn transistor switching applications
-
----
+    VCC --> R2["330Ω Resistor"]
+    R2 --> LED["LED"]
+    LED --> C["BC547 Collector"]
+    C --> E["BC547 Emitter"]
+    E --> GND
+```
 
 ## Components Used
 
@@ -31,56 +36,30 @@ This project automatically turns ON an LED during darkness and switches it OFF w
 - Breadboard
 - 5V Power Supply
 
----
-
-## Circuit Diagram
-
-[Insert circuit image here]
-
----
-
 ## Working Principle
 
-The LDR and resistor form a voltage divider.
-
-### Day Time
-
-- LDR resistance is low
-- Base voltage is low
-- Transistor remains OFF
-- LED remains OFF
-
-### Night Time
-
-- LDR resistance increases
-- Base voltage increases
-- Transistor turns ON
-- LED glows automatically
-
----
+- In bright light, the LDR resistance is low, keeping the transistor OFF and the LED OFF.
+- In darkness, the LDR resistance increases, turning the transistor ON and lighting the LED.
 
 ## Results
 
-✅ LED OFF in bright light
-
-✅ LED ON in darkness
-
-✅ Successful light sensing and automatic control
-
----
+✅ Automatic light detection  
+✅ LED OFF during daytime  
+✅ LED ON during darkness  
+✅ Successful hardware implementation
 
 ## Applications
 
-- Street lights
-- Outdoor garden lamps
+- Automatic street lighting
+- Garden lights
 - Emergency lighting
-- Home automation systems
+- Smart home automation
 
----
+## Future Enhancements
 
-## Future Improvements
+- Relay-controlled AC bulb
+- Arduino-based smart lighting
+- IoT-enabled monitoring system
+- Solar-powered automatic night light
 
-- Relay controlled AC lamp
-- Smart street lighting
-- IoT based light monitoring
-- Solar powered night light
+-
